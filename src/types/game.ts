@@ -9,6 +9,7 @@ export type PlayerData = {
 
 export type TileData = {
   position: Vector3;
+  scale: Vector3;
   height: number;
   type: string;
   color: Color;
