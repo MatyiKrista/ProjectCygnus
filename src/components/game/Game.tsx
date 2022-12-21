@@ -10,7 +10,7 @@ useGameStore.setState({ tiles });
 const Game = () => {
   return (
     <>
-      <color args={['#fff']} attach='background' />
+      <color args={['#000']} attach='background' />
       <Perf position='top-left' />
       <OrbitControls maxDistance={10} minDistance={1.5} enablePan={false} />
       <Environment preset='sunset' />

@@ -1,7 +1,7 @@
 export type TileType =
   | 'ocean'
+  | 'shore'
   | 'sand'
-  | 'beach'
   | 'grass'
   | 'forest'
   | 'rock'
