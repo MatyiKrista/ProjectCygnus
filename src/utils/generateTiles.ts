@@ -22,12 +22,13 @@ export const generateTiles = (): TileData[] => {
     return {
       id: uuid(),
       position,
-      height,
+      originalHeight: height,
+      height: calculatedHeight,
       scale,
     };
   });
   return tiles.map((tile) => ({
     ...tile,
-    ...getTileSpec(tile.height),
+    ...getTileSpec(tile.originalHeight),
   }));
 };

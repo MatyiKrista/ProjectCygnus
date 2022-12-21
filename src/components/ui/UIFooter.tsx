@@ -9,8 +9,8 @@ import { borderRadius } from '../../consts/ui';
 
 const IMAGE_MAP: Record<TileType, string> = {
   ocean: '',
+  shore: '',
   sand: '',
-  beach: '',
   grass: '',
   forest,
   rock,
