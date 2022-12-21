@@ -20,4 +20,6 @@ export type TileData = {
 export type GameData = {
   tiles: TileData[];
   players: PlayerData[];
+  selectedTile: UUID | null;
+  hoveredTile: UUID | null;
 };

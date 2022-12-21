@@ -1,35 +1,77 @@
-import { useMemo } from 'react';
-import { Shape } from 'three';
+import React, { memo, useCallback, useMemo, useRef } from 'react';
+import {
+  Color,
+  FrontSide,
+  Mesh,
+  MeshStandardMaterial,
+  ShaderMaterial,
+} from 'three';
+import tileVertexShader from '../../shaders/tile/vertex.glsl?raw';
+import tileFragmentShader from '../../shaders/tile/fragment.glsl?raw';
+import { TileGeometry } from './TileGeometry';
+import { useGameStore } from '../../hooks/useGameStore';
+import { TileData } from '../../types/game';
+import { ThreeEvent } from '@react-three/fiber/dist/declarations/src/core/events';
 
-export const Tile = ({ size: width = 10, ...rest }) => {
-  const shape = useMemo(() => {
-    const shape = new Shape();
-    const sides = 6;
-    const center = 0;
+type Props = {
+  tile: TileData;
+  isSelected: boolean;
+  isHovered: boolean;
+};
 
-    shape.moveTo(center + width * Math.cos(0), center + width * Math.sin(0));
+const isSelectedColor = new Color('white');
 
-    for (let i = 1; i <= sides; i += 1) {
-      shape.lineTo(
-        center + width * Math.cos((i * 2 * Math.PI) / sides),
-        center + width * Math.sin((i * 2 * Math.PI) / sides)
-      );
-    }
-    return shape;
-  }, [width]);
+const Tile = memo((props: Props) => {
+  const tileMesh = useRef<Mesh>(null);
+  const { tile, isSelected, isHovered } = props;
 
-  const settings = useMemo(
-    () => ({
-      steps: 2,
-      depth: 10,
-      bevelEnabled: true,
-      bevelThickness: 0.2,
-      bevelSize: 0.5,
-      bevelOffset: 0,
-      bevelSegments: 2,
-    }),
-    []
+  const color = useMemo(
+    () => (isSelected || isHovered ? isSelectedColor : tile.color),
+    [isSelected, tile.color, isHovered]
   );
 
-  return <extrudeGeometry args={[shape, settings]} {...rest} />;
-};
+  const clickHandler = useCallback(
+    (event: ThreeEvent<MouseEvent>) => {
+      event.stopPropagation();
+      useGameStore.setState({ selectedTile: isSelected ? null : tile.id });
+    },
+    [tile.id]
+  );
+
+  const hoverHandler = useCallback((event: ThreeEvent<MouseEvent>) => {
+    event.stopPropagation();
+    useGameStore.setState({ hoveredTile: tile.id });
+  }, []);
+
+  return (
+    <mesh
+      ref={tileMesh}
+      onClick={clickHandler}
+      onPointerOver={hoverHandler}
+      onPointerLeave={() =>
+        isHovered && useGameStore.setState({ hoveredTile: null })
+      }
+      material={[
+        new MeshStandardMaterial({
+          color,
+          side: FrontSide,
+          ...(isSelected && { emissive: 'white' }),
+        }),
+        new ShaderMaterial({
+          vertexShader: tileVertexShader,
+          fragmentShader: tileFragmentShader,
+          transparent: true,
+          uniforms: {
+            uColor: { value: color },
+          },
+        }),
+      ]}
+      position={tile.position}
+      scale={tile.scale}
+    >
+      <TileGeometry />
+    </mesh>
+  );
+});
+
+export default Tile;
