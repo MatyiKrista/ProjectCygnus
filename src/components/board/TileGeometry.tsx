@@ -1,7 +1,9 @@
 import { useMemo } from 'react';
 import { Shape } from 'three';
 
-export const TileGeometry = ({ size: width = 10, ...rest }) => {
+const width = 2;
+
+export const TileGeometry = (props: Record<string, any>) => {
   const shape = useMemo(() => {
     const shape = new Shape();
     const sides = 6;
@@ -21,15 +23,15 @@ export const TileGeometry = ({ size: width = 10, ...rest }) => {
   const settings = useMemo(
     () => ({
       steps: 2,
-      depth: 10,
+      depth: 1,
       bevelEnabled: true,
-      bevelThickness: 0.2,
-      bevelSize: 0.5,
-      bevelOffset: 0,
+      bevelThickness: 0.1,
+      bevelSize: 0.2,
+      bevelOffset: 0.2,
       bevelSegments: 2,
     }),
     []
   );
 
-  return <extrudeGeometry args={[shape, settings]} {...rest} />;
+  return <extrudeGeometry args={[shape, settings]} {...props} />;
 };

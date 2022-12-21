@@ -7,7 +7,7 @@ import { TILES } from '../consts/tiles';
 import { v4 as uuid } from 'uuid';
 
 const radius = 20;
-const baseScale = 0.01;
+const baseScale = 0.05;
 
 export const generateTiles = (): TileData[] => {
   const noise = generateNoise();
