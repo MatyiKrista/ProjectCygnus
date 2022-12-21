@@ -6,10 +6,10 @@ export const TILES: Record<TileType, TileConfig> = {
     color: '#6bbdab',
     type: 'ocean',
   },
-  shore: {
+  sand: {
     threshold: 0.01,
     color: '#98a6a1',
-    type: 'shore',
+    type: 'sand',
   },
   beach: {
     threshold: 0.04,
@@ -26,10 +26,10 @@ export const TILES: Record<TileType, TileConfig> = {
     color: '#7e4163',
     type: 'forest',
   },
-  stone: {
+  rock: {
     threshold: 0.24,
     color: '#333232',
-    type: 'stone',
+    type: 'rock',
   },
   ice: {
     threshold: 0.6,

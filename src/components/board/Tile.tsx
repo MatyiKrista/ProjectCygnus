@@ -38,19 +38,20 @@ const Tile = memo((props: Props) => {
     [tile.id]
   );
 
-  const hoverHandler = useCallback((event: ThreeEvent<MouseEvent>) => {
-    event.stopPropagation();
-    useGameStore.setState({ hoveredTile: tile.id });
-  }, []);
+  // const hoverHandler = useCallback((event: ThreeEvent<MouseEvent>) => {
+  //   event.stopPropagation();
+  //   useGameStore.setState({ hoveredTile: tile.id });
+  // }, []);
 
   return (
     <mesh
       ref={tileMesh}
       onClick={clickHandler}
-      onPointerOver={hoverHandler}
-      onPointerLeave={() =>
-        isHovered && useGameStore.setState({ hoveredTile: null })
-      }
+      // TODO ADD BACK IF PERFORMANCE IS STABLE
+      // onPointerOver={hoverHandler}
+      // onPointerLeave={() =>
+      //   isHovered && useGameStore.setState({ hoveredTile: null })
+      // }
       material={[
         new MeshStandardMaterial({
           color,

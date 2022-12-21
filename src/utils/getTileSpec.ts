@@ -5,16 +5,16 @@ export const getTileSpec = (height: number) => {
   const { color, type } = (() => {
     if (height <= TILES.ocean.threshold) {
       return { color: new Color(TILES.ocean.color), type: TILES.ocean.type };
-    } else if (height <= TILES.ocean.threshold + TILES.shore.threshold) {
-      return { color: new Color(TILES.shore.color), type: TILES.shore.type };
+    } else if (height <= TILES.ocean.threshold + TILES.sand.threshold) {
+      return { color: new Color(TILES.sand.color), type: TILES.sand.type };
     } else if (height <= TILES.ocean.threshold + TILES.beach.threshold) {
       return { color: new Color(TILES.beach.color), type: TILES.beach.type };
     } else if (height <= TILES.ocean.threshold + TILES.grass.threshold) {
       return { color: new Color(TILES.grass.color), type: TILES.grass.type };
     } else if (height <= TILES.ocean.threshold + TILES.forest.threshold) {
       return { color: new Color(TILES.forest.color), type: TILES.forest.type };
-    } else if (height <= TILES.ocean.threshold + TILES.stone.threshold) {
-      return { color: new Color(TILES.stone.color), type: TILES.stone.type };
+    } else if (height <= TILES.ocean.threshold + TILES.rock.threshold) {
+      return { color: new Color(TILES.rock.color), type: TILES.rock.type };
     } else {
       return { color: new Color(TILES.ice.color), type: TILES.ice.type };
     }

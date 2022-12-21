@@ -1,4 +1,5 @@
 import { Color, Vector3 } from 'three';
+import { TileType } from './config';
 
 export type UUID = string;
 
@@ -12,7 +13,7 @@ export type TileData = {
   position: Vector3;
   scale: Vector3;
   height: number;
-  type: string;
+  type: TileType;
   color: Color;
   owner?: PlayerData;
 };
