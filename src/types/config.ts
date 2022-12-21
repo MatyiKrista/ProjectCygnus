@@ -1,10 +1,10 @@
 export type TileType =
   | 'ocean'
-  | 'shore'
+  | 'sand'
   | 'beach'
   | 'grass'
   | 'forest'
-  | 'stone'
+  | 'rock'
   | 'ice';
 
 export type TileConfig = {

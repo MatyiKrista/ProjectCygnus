@@ -3,7 +3,7 @@ import { Vector3 } from 'three';
 export const generateHexagonScatter = (radius = 5, gap = 1) => {
   const points = [];
   points.push(new Vector3());
-  const unit = gap * 0.176;
+  const unit = gap * 0.18;
 
   const angle = Math.PI / 3;
   const axis = new Vector3(0, 0, 1);

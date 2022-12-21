@@ -13,6 +13,6 @@ export const generateNoise = () => {
   return (vec3: Vector3) =>
     Math.pow(
       MathUtils.mapLinear(fbm.get2(new Vector2(vec3.x, vec3.y)), -1, 1, 0, 1),
-      2
+      1.75
     );
 };

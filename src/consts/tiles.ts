@@ -3,13 +3,13 @@ import { TileConfig, TileType } from '../types/config';
 export const TILES: Record<TileType, TileConfig> = {
   ocean: {
     threshold: 0.21,
-    color: '#b2c5c1',
+    color: '#6bbdab',
     type: 'ocean',
   },
-  shore: {
+  sand: {
     threshold: 0.01,
     color: '#98a6a1',
-    type: 'shore',
+    type: 'sand',
   },
   beach: {
     threshold: 0.04,
@@ -22,14 +22,14 @@ export const TILES: Record<TileType, TileConfig> = {
     type: 'grass',
   },
   forest: {
-    threshold: 0.29,
+    threshold: 0.19,
     color: '#7e4163',
     type: 'forest',
   },
-  stone: {
-    threshold: 0.36,
+  rock: {
+    threshold: 0.24,
     color: '#333232',
-    type: 'stone',
+    type: 'rock',
   },
   ice: {
     threshold: 0.6,
