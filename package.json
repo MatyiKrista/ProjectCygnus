@@ -8,7 +8,10 @@
     "start": "vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "ts": "tsc --version && tsc --noemit -p tsconfig.json",
+    "prettier:check": "prettier . --check --ignore-path .gitignore",
+    "prettier:fix": "prettier . --write --ignore-path .gitignore"
   },
   "dependencies": {
     "@react-three/drei": "^9.32.3",
