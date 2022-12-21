@@ -26,7 +26,7 @@ const FooterStyled = styled.footer`
   bottom: 1rem;
   left: 1rem;
   right: 1rem;
-  height: 200px;
+  height: 0;
   display: flex;
   justify-content: space-between;
   pointer-events: none;
@@ -38,6 +38,7 @@ const FooterStyled = styled.footer`
 
 const FooterSideStyled = styled(UIBox)<{ open?: boolean }>`
   width: 33%;
+  height: 200px;
   background-size: cover;
   background-position: 50% 75%;
   filter: saturate(0.3);
@@ -46,7 +47,7 @@ const FooterSideStyled = styled(UIBox)<{ open?: boolean }>`
   align-items: center;
   justify-content: space-between;
   position: relative;
-  transform: translateY(${(props) => (props.open ? '0' : '150%')});
+  transform: translateY(${(props) => (props.open ? '-100%' : '1rem')});
   opacity: ${(props) => (props.open ? '1' : '0')};
   transition: transform 0.3s ease, opacity 0.3s ease;
 `;

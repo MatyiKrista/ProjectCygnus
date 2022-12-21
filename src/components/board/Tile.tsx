@@ -19,7 +19,7 @@ type Props = {
   isHovered: boolean;
 };
 
-const isSelectedColor = new Color('white');
+const isSelectedColor = new Color(2, 2, 2);
 
 const Tile = memo((props: Props) => {
   const tileMesh = useRef<Mesh>(null);
@@ -38,30 +38,31 @@ const Tile = memo((props: Props) => {
     [tile.id]
   );
 
-  // const hoverHandler = useCallback((event: ThreeEvent<MouseEvent>) => {
-  //   event.stopPropagation();
-  //   useGameStore.setState({ hoveredTile: tile.id });
-  // }, []);
+  const hoverHandler = useCallback((event: ThreeEvent<MouseEvent>) => {
+    event.stopPropagation();
+    useGameStore.setState({ hoveredTile: tile.id });
+  }, []);
 
   return (
     <mesh
       ref={tileMesh}
       onClick={clickHandler}
-      // TODO ADD BACK IF PERFORMANCE IS STABLE
-      // onPointerOver={hoverHandler}
-      // onPointerLeave={() =>
-      //   isHovered && useGameStore.setState({ hoveredTile: null })
-      // }
+      onPointerOver={hoverHandler}
+      onPointerLeave={() =>
+        isHovered && useGameStore.setState({ hoveredTile: null })
+      }
       material={[
         new MeshStandardMaterial({
           color,
           side: FrontSide,
+          toneMapped: false,
           ...(isSelected && { emissive: 'white' }),
         }),
         new ShaderMaterial({
           vertexShader: tileVertexShader,
           fragmentShader: tileFragmentShader,
           transparent: true,
+          toneMapped: false,
           uniforms: {
             uColor: { value: color },
           },
