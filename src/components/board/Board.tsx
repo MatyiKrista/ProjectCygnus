@@ -3,16 +3,13 @@ import { FrontSide, InstancedMesh, Object3D } from 'three';
 import { Tile } from './Tile';
 import { TILES } from '../../consts/colors';
 import { GENRATION_DEFAULT_SETTINGS } from '../../consts/generation';
-import { TileData } from '../../types/game';
+import { useTiles } from '../../hooks/useGameStore';
 
 const tempV4 = new Object3D();
 
-type Props = {
-  tiles: TileData[];
-};
-
-export const Board = ({ tiles }: Props) => {
+export const Board = () => {
   const ref = useRef<InstancedMesh>(null);
+  const tiles = useTiles();
 
   const generate = useCallback(
     (scale: number = 1) => {
