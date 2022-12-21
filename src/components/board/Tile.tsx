@@ -20,13 +20,13 @@ export const Tile = ({ size: width = 10, ...rest }) => {
 
   const settings = useMemo(
     () => ({
-      steps: 4,
+      steps: 2,
       depth: 10,
       bevelEnabled: true,
       bevelThickness: 0.2,
       bevelSize: 0.5,
       bevelOffset: 0,
-      bevelSegments: 8,
+      bevelSegments: 2,
     }),
     []
   );

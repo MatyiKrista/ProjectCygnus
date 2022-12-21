@@ -8,6 +8,7 @@ export type PlayerData = {
 };
 
 export type TileData = {
+  id: UUID;
   position: Vector3;
   scale: Vector3;
   height: number;

@@ -4,6 +4,7 @@ import { TileData } from '../types/game';
 import { getTileSpec } from './getTileSpec';
 import { Vector3 } from 'three';
 import { TILES } from '../consts/tiles';
+import { v4 as uuid } from 'uuid';
 
 const radius = 20;
 const baseScale = 0.01;
@@ -19,6 +20,7 @@ export const generateTiles = (): TileData[] => {
       10;
     const scale = new Vector3(baseScale, baseScale, calculatedHeight);
     return {
+      id: uuid(),
       position,
       height,
       scale,
