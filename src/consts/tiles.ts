@@ -2,39 +2,39 @@ import { TileConfig, TileType } from '../types/config';
 import { COLORS } from './colors';
 
 export const TILES: Record<TileType, TileConfig> = {
-  ocean: {
+  OCEAN: {
     threshold: 0.21,
-    color: COLORS.ocean,
-    type: 'ocean',
+    color: COLORS.OCEAN,
+    type: 'OCEAN',
   },
-  shore: {
+  SHORE: {
     threshold: 0.01,
-    color: COLORS.shore,
-    type: 'shore',
+    color: COLORS.SHORE,
+    type: 'SHORE',
   },
-  sand: {
+  SAND: {
     threshold: 0.04,
-    color: COLORS.sand,
-    type: 'sand',
+    color: COLORS.SAND,
+    type: 'SAND',
   },
-  grass: {
+  GRASS: {
     threshold: 0.1,
-    color: COLORS.grass,
-    type: 'grass',
+    color: COLORS.GRASS,
+    type: 'GRASS',
   },
-  forest: {
+  FOREST: {
     threshold: 0.19,
-    color: COLORS.forest,
-    type: 'forest',
+    color: COLORS.FOREST,
+    type: 'FOREST',
   },
-  rock: {
+  ROCK: {
     threshold: 0.24,
-    color: COLORS.rock,
-    type: 'rock',
+    color: COLORS.ROCK,
+    type: 'ROCK',
   },
-  ice: {
+  ICE: {
     threshold: 0.6,
-    color: COLORS.ice,
-    type: 'ice',
+    color: COLORS.ICE,
+    type: 'ICE',
   },
 };

@@ -1,20 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 import { UIBox } from './UIBox';
-import forest from '../../assets/images/forest.png?url';
-import rock from '../../assets/images/rock.png?url';
+import FOREST from '../../assets/images/forest.png?url';
+import ROCK from '../../assets/images/rock.png?url';
 import { TileData } from '../../types/game';
 import { TileType } from '../../types/config';
 import { borderRadius } from '../../consts/ui';
 
 const IMAGE_MAP: Record<TileType, string> = {
-  ocean: '',
-  shore: '',
-  sand: '',
-  grass: '',
-  forest,
-  rock,
-  ice: '',
+  OCEAN: '',
+  SHORE: '',
+  SAND: '',
+  GRASS: '',
+  FOREST,
+  ROCK,
+  ICE: '',
 };
 
 type Props = {

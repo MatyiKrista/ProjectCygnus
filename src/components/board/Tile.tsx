@@ -12,6 +12,7 @@ import { TileGeometry } from './TileGeometry';
 import { useGameStore } from '../../hooks/useGameStore';
 import { TileData } from '../../types/game';
 import { ThreeEvent } from '@react-three/fiber/dist/declarations/src/core/events';
+import { Html } from '@react-three/drei';
 
 type Props = {
   tile: TileData;
@@ -44,35 +45,43 @@ const Tile = memo((props: Props) => {
   }, []);
 
   return (
-    <mesh
-      ref={tileMesh}
-      onClick={clickHandler}
-      onPointerOver={hoverHandler}
-      onPointerLeave={() =>
-        isHovered && useGameStore.setState({ hoveredTile: null })
-      }
-      material={[
-        new MeshStandardMaterial({
-          color,
-          side: FrontSide,
-          toneMapped: false,
-          ...(isSelected && { emissive: 'white' }),
-        }),
-        new ShaderMaterial({
-          vertexShader: tileVertexShader,
-          fragmentShader: tileFragmentShader,
-          transparent: true,
-          toneMapped: false,
-          uniforms: {
-            uColor: { value: color },
-          },
-        }),
-      ]}
-      position={tile.position}
-      scale={tile.scale}
-    >
-      <TileGeometry />
-    </mesh>
+    <>
+      <mesh
+        ref={tileMesh}
+        onClick={clickHandler}
+        onPointerOver={hoverHandler}
+        onPointerLeave={() =>
+          isHovered && useGameStore.setState({ hoveredTile: null })
+        }
+        material={[
+          new MeshStandardMaterial({
+            color,
+            side: FrontSide,
+            toneMapped: false,
+            ...(isSelected && { emissive: 'white' }),
+          }),
+          new ShaderMaterial({
+            vertexShader: tileVertexShader,
+            fragmentShader: tileFragmentShader,
+            transparent: true,
+            toneMapped: false,
+            uniforms: {
+              uColor: { value: color },
+            },
+          }),
+        ]}
+        position={tile.position}
+        scale={tile.scale}
+      >
+        <TileGeometry />
+        <Html>
+          <div className='tile-label'>{tile.building}</div>
+          {/*<div style={{ whiteSpace: 'nowrap' }}>*/}
+          {/*  {tile.coordinates.toArray().join(' - ')}*/}
+          {/*</div>*/}
+        </Html>
+      </mesh>
+    </>
   );
 });
 

@@ -1,13 +1,15 @@
 import { MathUtils, Vector2, Vector3 } from 'three';
 // @ts-ignore
 import { FBM } from 'three-noise';
-import { GENRATION_DEFAULT_SETTINGS } from '../consts/generation';
+import { GENERATION } from '../consts/generation';
+
+const { SEED, FUZZY, DETAIL } = GENERATION;
 
 export const generateNoise = () => {
   const fbm = new FBM({
-    seed: GENRATION_DEFAULT_SETTINGS.seed,
-    lacunarity: GENRATION_DEFAULT_SETTINGS.detail * 2,
-    persistance: GENRATION_DEFAULT_SETTINGS.fuzzyness * 8,
+    seed: SEED,
+    lacunarity: DETAIL * 2,
+    persistance: FUZZY * 8,
   });
 
   return (vec3: Vector3) =>
