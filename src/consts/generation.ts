@@ -1,5 +1,5 @@
 export const GENERATION = {
-  RADIUS: 10,
+  RADIUS: 20,
   SEGMENTS: 6,
   SEED: Math.random(),
   SCALE: 0.2,
