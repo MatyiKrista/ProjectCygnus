@@ -38,7 +38,7 @@ export const generateTiles = (): TileData[] => {
   const tiles = hexagonScatter.map((config) => {
     const noiseHeight = noise(config.position);
     const neighbors = getNeighbors(config.position, positionMap);
-    const buildingHeight = TILES.grass.threshold + TILES.ocean.threshold;
+    const buildingHeight = TILES.GRASS.threshold + TILES.OCEAN.threshold;
 
     const height =
       config.building || neighbors.some((neighbor) => neighbor.building)
@@ -46,7 +46,7 @@ export const generateTiles = (): TileData[] => {
         : noiseHeight;
 
     const calculatedHeight =
-      (height <= TILES.ocean.threshold ? TILES.ocean.threshold : height) *
+      (height <= TILES.OCEAN.threshold ? TILES.OCEAN.threshold : height) *
       baseScale *
       10;
 

@@ -29,7 +29,7 @@ const TileHighlight = (props: Props) => {
         fragmentShader={tileHighlightFragmentShader}
         transparent={true}
         uniforms={{
-          uColor: { value: new Color(COLORS.highlight) },
+          uColor: { value: new Color(COLORS.HIGHLIGHT) },
         }}
       />
     </mesh>

@@ -2,13 +2,13 @@ import { Vector2, Vector3 } from 'three';
 import { UUID } from './game';
 
 export type TileType =
-  | 'ocean'
-  | 'shore'
-  | 'sand'
-  | 'grass'
-  | 'forest'
-  | 'rock'
-  | 'ice';
+  | 'OCEAN'
+  | 'SHORE'
+  | 'SAND'
+  | 'GRASS'
+  | 'FOREST'
+  | 'ROCK'
+  | 'ICE';
 
 export type BuildingType = 'base' | 'factory' | 'mine';
 
