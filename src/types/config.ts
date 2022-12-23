@@ -1,3 +1,6 @@
+import { Vector3 } from 'three';
+import { UUID } from './game';
+
 export type TileType =
   | 'ocean'
   | 'shore'
@@ -7,8 +10,16 @@ export type TileType =
   | 'rock'
   | 'ice';
 
+export type BuildingType = 'base' | 'factory' | 'mine';
+
 export type TileConfig = {
   color: string;
   threshold: number;
   type: TileType;
+};
+
+export type CoordinateConfig = {
+  id: UUID;
+  position: Vector3;
+  building?: BuildingType;
 };

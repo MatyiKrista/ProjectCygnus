@@ -17,6 +17,7 @@ export type TileData = {
   type: TileType;
   color: Color;
   owner?: PlayerData;
+  neighborIds: UUID[];
 };
 
 export type GameData = {
@@ -24,4 +25,5 @@ export type GameData = {
   players: PlayerData[];
   selectedTile: UUID | null;
   hoveredTile: UUID | null;
+  highlightedTiles: UUID[];
 };

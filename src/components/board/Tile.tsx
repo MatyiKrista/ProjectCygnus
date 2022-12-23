@@ -44,35 +44,37 @@ const Tile = memo((props: Props) => {
   }, []);
 
   return (
-    <mesh
-      ref={tileMesh}
-      onClick={clickHandler}
-      onPointerOver={hoverHandler}
-      onPointerLeave={() =>
-        isHovered && useGameStore.setState({ hoveredTile: null })
-      }
-      material={[
-        new MeshStandardMaterial({
-          color,
-          side: FrontSide,
-          toneMapped: false,
-          ...(isSelected && { emissive: 'white' }),
-        }),
-        new ShaderMaterial({
-          vertexShader: tileVertexShader,
-          fragmentShader: tileFragmentShader,
-          transparent: true,
-          toneMapped: false,
-          uniforms: {
-            uColor: { value: color },
-          },
-        }),
-      ]}
-      position={tile.position}
-      scale={tile.scale}
-    >
-      <TileGeometry />
-    </mesh>
+    <>
+      <mesh
+        ref={tileMesh}
+        onClick={clickHandler}
+        onPointerOver={hoverHandler}
+        onPointerLeave={() =>
+          isHovered && useGameStore.setState({ hoveredTile: null })
+        }
+        material={[
+          new MeshStandardMaterial({
+            color,
+            side: FrontSide,
+            toneMapped: false,
+            ...(isSelected && { emissive: 'white' }),
+          }),
+          new ShaderMaterial({
+            vertexShader: tileVertexShader,
+            fragmentShader: tileFragmentShader,
+            transparent: true,
+            toneMapped: false,
+            uniforms: {
+              uColor: { value: color },
+            },
+          }),
+        ]}
+        position={tile.position}
+        scale={tile.scale}
+      >
+        <TileGeometry />
+      </mesh>
+    </>
   );
 });
 
