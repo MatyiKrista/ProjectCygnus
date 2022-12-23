@@ -6,4 +6,6 @@ export const GENRATION_DEFAULT_SETTINGS = {
   scale: 0.2,
   detail: 0.5,
   fuzzyness: 0.25,
+  playersNum: 5,
+  nodesPerPlayer: 2,
 };

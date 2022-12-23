@@ -58,6 +58,7 @@ export const generateTiles = (): TileData[] => {
       originalHeight: height,
       height: calculatedHeight,
       neighborIds: neighbors.map((neighbor) => neighbor.id),
+      building: config.building,
       scale,
     };
   });

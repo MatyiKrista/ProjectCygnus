@@ -12,6 +12,7 @@ import { TileGeometry } from './TileGeometry';
 import { useGameStore } from '../../hooks/useGameStore';
 import { TileData } from '../../types/game';
 import { ThreeEvent } from '@react-three/fiber/dist/declarations/src/core/events';
+import { Html } from '@react-three/drei';
 
 type Props = {
   tile: TileData;
@@ -73,6 +74,9 @@ const Tile = memo((props: Props) => {
         scale={tile.scale}
       >
         <TileGeometry />
+        <Html>
+          <div className='tile-label'>{tile.building}</div>
+        </Html>
       </mesh>
     </>
   );
