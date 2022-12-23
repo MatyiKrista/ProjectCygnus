@@ -76,6 +76,9 @@ const Tile = memo((props: Props) => {
         <TileGeometry />
         <Html>
           <div className='tile-label'>{tile.building}</div>
+          {/*<div style={{ whiteSpace: 'nowrap' }}>*/}
+          {/*  {tile.coordinates.toArray().join(' - ')}*/}
+          {/*</div>*/}
         </Html>
       </mesh>
     </>

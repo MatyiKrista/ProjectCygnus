@@ -53,12 +53,10 @@ export const generateTiles = (): TileData[] => {
     const scale = new Vector3(baseScale, baseScale, calculatedHeight);
 
     return {
-      id: config.id,
-      position: config.position,
+      ...config,
       originalHeight: height,
       height: calculatedHeight,
       neighborIds: neighbors.map((neighbor) => neighbor.id),
-      building: config.building,
       scale,
     };
   });

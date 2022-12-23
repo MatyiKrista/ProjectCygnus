@@ -1,5 +1,5 @@
 import { Color, Vector3 } from 'three';
-import { BuildingType, TileType } from './config';
+import { CoordinateConfig, TileType } from './config';
 
 export type UUID = string;
 
@@ -9,8 +9,6 @@ export type PlayerData = {
 };
 
 export type TileData = {
-  id: UUID;
-  position: Vector3;
   scale: Vector3;
   originalHeight: number;
   height: number;
@@ -18,8 +16,7 @@ export type TileData = {
   color: Color;
   owner?: PlayerData;
   neighborIds: UUID[];
-  building?: BuildingType | null;
-};
+} & CoordinateConfig;
 
 export type GameData = {
   tiles: TileData[];

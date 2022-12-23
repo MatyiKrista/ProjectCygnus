@@ -1,4 +1,4 @@
-import { Vector3 } from 'three';
+import { Vector2, Vector3 } from 'three';
 import { UUID } from './game';
 
 export type TileType =
@@ -21,5 +21,6 @@ export type TileConfig = {
 export type CoordinateConfig = {
   id: UUID;
   position: Vector3;
+  coordinates: Vector2;
   building?: BuildingType;
 };
