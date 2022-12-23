@@ -6,6 +6,7 @@ export const useGameStore = create<GameData>(() => ({
   players: [],
   selectedTile: null,
   hoveredTile: null,
+  highlightedTiles: [],
 }));
 
 export const useTiles = () => useGameStore((state) => state.tiles);
