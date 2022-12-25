@@ -1,14 +1,14 @@
 import { Canvas } from '@react-three/fiber';
 import Game from './components/game/Game';
 import { CAMERA_PROPS } from './consts/camera';
-import { useGameStore } from './hooks/useGameStore';
 import UserInterface from './components/ui/UserInterface';
+import { gameStore } from './store/gameStore';
 
 const App = () => {
   return (
     <>
       <Canvas
-        onPointerMissed={() => useGameStore.setState({ selectedTile: null })}
+        onPointerMissed={() => gameStore.setState({ selectedTile: null })}
         shadows
         camera={CAMERA_PROPS}
       >

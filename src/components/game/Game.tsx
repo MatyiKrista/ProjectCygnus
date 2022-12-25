@@ -1,11 +1,13 @@
 import { OrbitControls, Environment } from '@react-three/drei';
 import { Board } from '../board/Board';
 import { generateTiles } from '../../utils/generateTiles';
-import { useGameStore } from '../../hooks/useGameStore';
 import { Perf } from 'r3f-perf';
+import { getMockedUnit, gameStore } from '../../store/gameStore';
 
 const tiles = generateTiles();
-useGameStore.setState({ tiles });
+gameStore.setState({ tiles });
+const unit = getMockedUnit(tiles[0].id);
+gameStore.setState({ units: [unit] });
 
 const Game = () => {
   return (
