@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import {
-  useHoveredTile,
-  useSelectedTile,
+  useHoveredTileId,
+  useSelectedTileId,
   useTiles,
 } from '../../hooks/useGameStore';
 import styled from 'styled-components';
@@ -19,12 +19,10 @@ const UserInterfaceWrapper = styled.div`
   }
 `;
 
-type Props = {};
-
-const UserInterface = (props: Props) => {
+const UserInterface = () => {
   const tiles = useTiles();
-  const selectedTileId = useSelectedTile();
-  const hoveredTileId = useHoveredTile();
+  const selectedTileId = useSelectedTileId();
+  const hoveredTileId = useHoveredTileId();
 
   const selectedTile = useMemo(
     () => tiles.find((tile) => tile.id === selectedTileId),

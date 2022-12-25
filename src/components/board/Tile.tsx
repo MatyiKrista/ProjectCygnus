@@ -11,12 +11,13 @@ import tileFragmentShader from '../../shaders/tile/fragment.glsl?raw';
 import { TileGeometry } from './TileGeometry';
 import { TileData } from '../../types/game';
 import { ThreeEvent } from '@react-three/fiber/dist/declarations/src/core/events';
+import { gameStore } from '../../store/gameStore';
 import { useSelectTile } from '../../hooks/useGameStore';
-import { useHovered } from '../../hooks/useHovered';
 
 type Props = {
   tile: TileData;
   isSelected: boolean;
+  isHovered: boolean;
   isHighlighted: boolean;
 };
 
@@ -25,19 +26,18 @@ const isHighlightedColor = new Color(0xff6d00ff);
 
 const Tile = memo((props: Props) => {
   const tileMesh = useRef<Mesh>(null);
-  const { tile, isSelected, isHighlighted } = props;
+  const { tile, isSelected, isHovered, isHighlighted } = props;
   const selectTile = useSelectTile();
-  const [isHovered, hoverHandlers] = useHovered();
 
   const color = useMemo(() => {
-    if (isHighlighted) {
-      return isHighlightedColor;
-    } else if (isSelected || isHovered) {
+    if (isSelected || isHovered) {
       return isSelectedColor;
+    } else if (isHighlighted) {
+      return isHighlightedColor;
     } else {
       return tile.color;
     }
-  }, [isSelected, tile.color, isHighlighted]);
+  }, [isSelected, tile.color, isHighlighted, isHovered]);
 
   const clickHandler = useCallback(
     (event: ThreeEvent<MouseEvent>) => {
@@ -47,11 +47,19 @@ const Tile = memo((props: Props) => {
     [tile.id]
   );
 
+  const hoverHandler = useCallback((event: ThreeEvent<MouseEvent>) => {
+    event.stopPropagation();
+    gameStore.setState({ hoveredTile: tile.id });
+  }, []);
+
   return (
     <mesh
       ref={tileMesh}
       onClick={clickHandler}
-      {...hoverHandlers}
+      onPointerOver={hoverHandler}
+      onPointerLeave={() =>
+        isHovered && gameStore.setState({ hoveredTile: null })
+      }
       material={[
         new MeshStandardMaterial({
           color,
