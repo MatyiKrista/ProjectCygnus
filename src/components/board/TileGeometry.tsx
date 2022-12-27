@@ -28,7 +28,7 @@ export const TileGeometry = (props: Record<string, any>) => {
       bevelThickness: 0.1,
       bevelSize: 0.2,
       bevelOffset: 0.2,
-      bevelSegments: 2,
+      bevelSegments: 1,
     }),
     []
   );

@@ -1,5 +1,6 @@
 import create from 'zustand';
 import { GameData, UnitData, UUID } from '../types/game';
+import { getTilesInRange } from '../utils/getTilesInRange';
 
 export const getMockedUnit = (tileId: UUID): UnitData => ({
   id: '1',
@@ -58,7 +59,12 @@ export const gameStore = create<GameStore>((set) => ({
   hoveredTile: null,
   selectTile: (tileId: UUID) => {
     set((state) => {
-      const { units } = state;
+      const { units, tiles } = state;
+
+      const selectedTile = tiles.find((tile) => tile.id === tileId);
+      const currentTile = tiles.find((tile) => tile.id === state.selectedTile);
+      const unitOnSelected = units.find((u) => u.tileId === tileId);
+      const currentUnit = units.find((u) => u.id === state.selectedUnit);
 
       if (state.selectedTile === tileId) {
         return {
@@ -68,11 +74,29 @@ export const gameStore = create<GameStore>((set) => ({
         };
       }
 
-      const unit = units.find((u) => u.tileId === tileId);
+      const tilesInRange =
+        currentUnit && currentTile
+          ? getTilesInRange(currentUnit?.stats.range.value, currentTile)
+          : [];
+
+      if (
+        currentUnit &&
+        !unitOnSelected &&
+        selectedTile &&
+        tilesInRange.includes(selectedTile?.id)
+      ) {
+        if (currentUnit) {
+          currentUnit.tileId = tileId;
+          return {
+            selectedTile: tileId,
+            selectedUnit: currentUnit.id,
+          };
+        }
+      }
 
       return {
         selectedTile: tileId,
-        selectedUnit: unit ? unit.id : null,
+        selectedUnit: unitOnSelected ? unitOnSelected.id : null,
       };
     });
   },
