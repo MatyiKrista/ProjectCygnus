@@ -1,7 +1,7 @@
 import { Canvas } from '@react-three/fiber';
 import Game from '../components/game/Game';
 import { CAMERA_PROPS } from '../consts/camera';
-import UserInterface from '../components/ui/UserInterface';
+import UserInterface from '../components/interface/UserInterface';
 import { gameStore } from '../store/gameStore';
 
 const GameCanvas = () => {

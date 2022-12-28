@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import Home from './scenes/Home';
 import Login from './scenes/Login';
-import RequireAuth from './auth/RequireAuth';
+import RequireAuth from './components/auth/RequireAuth';
 
 const App = () => {
   return (

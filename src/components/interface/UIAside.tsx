@@ -1,6 +1,6 @@
 type Props = {};
 
-const UiAside = (props: Props) => {
+const UiAside = () => {
   return <aside></aside>;
 };
 

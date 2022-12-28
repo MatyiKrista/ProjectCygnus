@@ -1,4 +1,4 @@
-import { useIsAuth } from '../hooks/firebase/useFirebaseStore';
+import { useIsAuth } from '../../hooks/firebase/useFirebaseStore';
 import { Navigate, useLocation } from 'react-router-dom';
 
 type Props = {
