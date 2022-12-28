@@ -1,21 +1,29 @@
-import { Canvas } from '@react-three/fiber';
-import Game from './components/game/Game';
-import { CAMERA_PROPS } from './consts/camera';
-import UserInterface from './components/ui/UserInterface';
-import { gameStore } from './store/gameStore';
+import { Routes, Route } from 'react-router-dom';
+import Home from './scenes/Home';
+import Login from './scenes/Login';
+import RequireAuth from './auth/RequireAuth';
 
 const App = () => {
   return (
-    <>
-      <Canvas
-        onPointerMissed={() => gameStore.setState({ selectedTile: null })}
-        shadows
-        camera={CAMERA_PROPS}
-      >
-        <Game />
-      </Canvas>
-      <UserInterface />
-    </>
+    <Routes>
+      <Route path='/login' element={<Login />} />
+      <Route
+        path='/'
+        element={
+          <RequireAuth>
+            <Home />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path='/:id'
+        element={
+          <RequireAuth>
+            <Home />
+          </RequireAuth>
+        }
+      />
+    </Routes>
   );
 };
 
