@@ -1,4 +1,3 @@
-import React from 'react';
 import { TileData } from '../../types/game';
 import styled from 'styled-components';
 import { UIBox } from './UIBox';

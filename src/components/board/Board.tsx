@@ -1,26 +1,21 @@
-import {
-  useSelectedTileId,
-  useTiles,
-  useUnits,
-  useHighlightedTiles,
-  useHoveredTileId,
-} from '../../hooks/useGameStore';
 import Tile from './Tile';
-import TileHighlight from './TileHighlight';
-import Unit from '../unit/Unit';
-import Arrow from './Arrow';
+import { TileData } from '../../types/game';
 
-export const Board = () => {
-  const tiles = useTiles();
-  const units = useUnits();
-  const selectedTileId = useSelectedTileId();
-  const hoveredTileId = useHoveredTileId();
-  const highlightedTileIds = useHighlightedTiles();
+type Props = {
+  tiles: TileData[];
+  selectedTileId: string | null;
+  hoveredTileId: string | null;
+  highlightedTileIds: string[];
+};
 
-  const selectedTile = tiles.find((tile) => tile.id === selectedTileId);
-
+export const Board = ({
+  tiles,
+  selectedTileId,
+  hoveredTileId,
+  highlightedTileIds,
+}: Props) => {
   return (
-    <group>
+    <group rotation-x={-Math.PI * 0.5}>
       {tiles.map((tile) => (
         <Tile
           tile={tile}
@@ -30,11 +25,6 @@ export const Board = () => {
           key={tile.id}
         />
       ))}
-      {units.map((unit) => (
-        <Unit key={unit.id} unit={unit} />
-      ))}
-      <Arrow />
-      {!!selectedTile && <TileHighlight tile={selectedTile} />}
     </group>
   );
 };

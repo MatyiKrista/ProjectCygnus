@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import { UIBox } from './UIBox';
 import FOREST from '../../assets/images/forest.png?url';
