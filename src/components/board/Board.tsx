@@ -15,7 +15,7 @@ export const Board = ({
   highlightedTileIds,
 }: Props) => {
   return (
-    <group rotation-x={-Math.PI * 0.5}>
+    <group>
       {tiles.map((tile) => (
         <Tile
           tile={tile}
