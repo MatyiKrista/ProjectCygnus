@@ -12,7 +12,7 @@ import { TileGeometry } from './TileGeometry';
 import { TileData } from '../../types/game';
 import { ThreeEvent } from '@react-three/fiber/dist/declarations/src/core/events';
 import { gameStore } from '../../store/gameStore';
-import { useSelectTile } from '../../hooks/useGameStore';
+import { useSelectTile } from '../../hooks/store/useGameStore';
 
 type Props = {
   tile: TileData;

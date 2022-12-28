@@ -3,7 +3,7 @@ import {
   useHoveredTileId,
   useSelectedTileId,
   useTiles,
-} from '../../hooks/useGameStore';
+} from '../../hooks/store/useGameStore';
 import styled from 'styled-components';
 import UIHeader from './UIHeader';
 import UIAside from './UIAside';

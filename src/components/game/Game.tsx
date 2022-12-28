@@ -9,7 +9,7 @@ import {
   useSelectedTileId,
   useTiles,
   useUnits,
-} from '../../hooks/useGameStore';
+} from '../../hooks/store/useGameStore';
 import Units from '../units/Units';
 import Indicators from '../indicators/Indicators';
 

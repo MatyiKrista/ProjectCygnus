@@ -1,5 +1,5 @@
-import { gameStore } from '../store/gameStore';
-import { getTilesInRange } from '../utils/getTilesInRange';
+import { gameStore } from '../../store/gameStore';
+import { getTilesInRange } from '../../utils/getTilesInRange';
 import { useMemo } from 'react';
 
 export const useTiles = () => gameStore((state) => state.tiles);

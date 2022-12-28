@@ -4,7 +4,7 @@ import {
   useHoveredTile,
   useSelectedUnit,
   useTiles,
-} from '../../hooks/useGameStore';
+} from '../../hooks/store/useGameStore';
 import { QuadraticBezierCurve3, ShaderMaterial } from 'three';
 import arrowVertexShader from '../../shaders/arrow/vertex.glsl?raw';
 import arrowFragmentShader from '../../shaders/arrow/fragment.glsl?raw';

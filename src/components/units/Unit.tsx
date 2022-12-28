@@ -5,7 +5,7 @@ import {
   useSelectedUnitId,
   useSelectUnit,
   useTiles,
-} from '../../hooks/useGameStore';
+} from '../../hooks/store/useGameStore';
 import { Vector3 } from 'three';
 import { ThreeEvent } from '@react-three/fiber/dist/declarations/src/core/events';
 import { useSpring, animated } from '@react-spring/three';
