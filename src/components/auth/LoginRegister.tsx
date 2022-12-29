@@ -1,4 +1,3 @@
-import { Box } from '../ui/Box';
 import { Input, InputHint, InputLabel } from '../ui/Input';
 import { Button } from '../ui/Button';
 import { useForm } from 'react-hook-form';
@@ -12,6 +11,7 @@ import {
   GoogleAuthProvider,
 } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import { NeumorphicBox } from '../ui/NeumorphicBox';
 
 const provider = new GoogleAuthProvider();
 
@@ -37,7 +37,7 @@ const LoginRegister = () => {
     if (mode === 'login') {
       signInWithEmailAndPassword(auth, email, password)
         .then(() => {
-          navigate('/home');
+          navigate('/');
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -48,7 +48,7 @@ const LoginRegister = () => {
     }
     createUserWithEmailAndPassword(auth, email, password)
       .then(() => {
-        navigate('/home');
+        navigate('/');
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -60,7 +60,7 @@ const LoginRegister = () => {
   const onGoogleLogin = () => {
     signInWithPopup(auth, provider)
       .then(() => {
-        navigate('/home');
+        navigate('/');
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -72,9 +72,9 @@ const LoginRegister = () => {
   };
 
   return (
-    <Box gap={2} style={{ width: '20rem', maxWidth: '90vw' }}>
+    <NeumorphicBox $gap={4} style={{ width: '20rem', maxWidth: '90vw' }}>
       <form onSubmit={handleSubmit(onSubmit)} style={{ width: '100%' }}>
-        <Flex align='stretch' direction='column' gap={2}>
+        <Flex $align='stretch' $direction='column' $gap={4}>
           <h1>{mode === 'login' ? 'Login' : 'Register'}</h1>
           <div>
             <InputLabel htmlFor='email'>Email</InputLabel>
@@ -87,7 +87,7 @@ const LoginRegister = () => {
               placeholder='Email'
             />
             {errors.email && (
-              <InputHint color='red'>Please enter a valid email</InputHint>
+              <InputHint $type='error'>Please enter a valid email</InputHint>
             )}
           </div>
           <div>
@@ -99,7 +99,7 @@ const LoginRegister = () => {
               type='password'
             />
             {errors.password && (
-              <InputHint color='red'>
+              <InputHint $type='error'>
                 Please enter a password with at least 8 characters
               </InputHint>
             )}
@@ -109,12 +109,19 @@ const LoginRegister = () => {
           </Button>
         </Flex>
       </form>
-      <Button expanded outlined type='button' onClick={onGoogleLogin}>
+      <Button
+        expanded
+        outlined
+        $color='dark'
+        type='button'
+        onClick={onGoogleLogin}
+      >
         {mode === 'login' ? 'Login' : 'Register'} with Google
       </Button>
       <Button
         expanded
         outlined
+        $color='dark'
         type='button'
         onClick={() => setMode(mode === 'login' ? 'register' : 'login')}
       >
@@ -122,7 +129,7 @@ const LoginRegister = () => {
           ? 'No account yet? Register'
           : 'Already have an account? Login'}
       </Button>
-    </Box>
+    </NeumorphicBox>
   );
 };
 

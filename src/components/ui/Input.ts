@@ -1,17 +1,26 @@
 import styled from 'styled-components';
-import { borderRadius, space } from './helpers';
+import { borderRadius, color, neumorphicShadow, space } from './helpers';
+import { UIType } from '../../types/ui';
 
 export const Input = styled.input`
-  border: 1px solid #ccc;
+  background-color: ${color('background')};
   border-radius: ${borderRadius('sm')};
   padding: ${space(3)} ${space(4)};
   font-size: 1rem;
   outline: none;
   width: 100%;
+  box-shadow: ${neumorphicShadow('sm')}, ${neumorphicShadow('sm', true)};
+  border: 2px solid ${color('background')};
+  margin: ${space(2)} 0;
+  color: ${color('dark')};
 
   &:focus,
   &:hover {
-    border-color: #333;
+    border-color: ${color('light')};
+  }
+
+  &::placeholder {
+    color: #888;
   }
 `;
 
@@ -23,8 +32,8 @@ export const InputLabel = styled.label`
   font-weight: bold;
 `;
 
-export const InputHint = styled.span<{ color?: string }>`
+export const InputHint = styled.span<{ $type?: UIType }>`
   font-size: 0.75rem;
-  color: ${({ color }) => color || '#333'};
+  color: ${({ $type = 'dark' }) => color($type)};
   margin-top: ${space(2)};
 `;

@@ -8,7 +8,7 @@ const Container = styled(Flex)`
 `;
 const Login = () => {
   return (
-    <Container align='center' justify='center'>
+    <Container $align='center' $justify='center'>
       <LoginRegister />
     </Container>
   );

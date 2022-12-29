@@ -1,9 +1,16 @@
-import { borderRadius, space } from './helpers';
+import {
+  borderRadius,
+  color,
+  colorObject,
+  neumorphicShadow,
+  space,
+} from './helpers';
 import styled, { css } from 'styled-components';
-import { Color } from 'three';
+import { Size, UIType } from '../../types/ui';
 
 export const Button = styled.button<{
-  color?: string;
+  $size?: Size;
+  $color?: UIType;
   outlined?: boolean;
   expanded?: boolean;
 }>`
@@ -11,22 +18,23 @@ export const Button = styled.button<{
   align-items: center;
   justify-content: center;
   border: none;
-  border-radius: ${borderRadius('sm')};
-  padding: ${space(4)} ${space(6)};
+  border-radius: ${({ $size = 'md' }) => borderRadius($size)};
+  padding: ${({ $size = 'md' }) => space($size === 'sm' ? 2 : 3)}
+    ${({ $size = 'sm' }) => space($size === 'sm' ? 3 : 6)};
   width: ${({ expanded }) => (expanded ? '100%' : 'auto')};
   cursor: pointer;
-  transition-property: background-color, border-color, color, box-shadow;
+  transition-property: background-color, border-color, color;
   transition-duration: 0.1s;
   transition-timing-function: ease-in-out;
+  box-shadow: ${neumorphicShadow('sm')};
 
-  ${({ outlined, color = 'black' }) => {
-    const colorObj = new Color(color);
-    const baseColor = '#' + colorObj.getHexString();
-    const isLight = colorObj.getHSL({ h: 0, s: 0, l: 0 }).l > 0.65;
-    const hoverColor =
-      '#' + colorObj.offsetHSL(0, 0, 0.25 * (isLight ? -1 : 1)).getHexString();
-    const shadowColor =
-      '#' + colorObj.offsetHSL(0, 0, 0.5 * (isLight ? -1 : 1)).getHexString();
+  ${({ outlined, $color = 'background' }) => {
+    const colorObj = colorObject($color);
+    const baseColor = color($color);
+    const isLight = colorObj.l > 65;
+    const hoverColor = color($color, {
+      lightness: isLight ? colorObj.l - 20 : colorObj.l + 20,
+    });
     const overLayColor = isLight ? 'black' : 'white';
 
     return outlined
@@ -38,7 +46,6 @@ export const Button = styled.button<{
           &:hover {
             border-color: 1px solid ${hoverColor};
             color: ${hoverColor};
-            box-shadow: 0 0 0 ${space(1)} ${shadowColor};
           }
         `
       : css`
@@ -47,7 +54,6 @@ export const Button = styled.button<{
 
           &:hover {
             background-color: ${hoverColor};
-            box-shadow: 0 0 0 ${space(1)} ${shadowColor};
           }
         `;
   }}
