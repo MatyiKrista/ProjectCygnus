@@ -1,6 +1,7 @@
 import { Flex } from '../components/ui/Flex';
 import { space } from '../components/ui/helpers';
 import { NeumorphicBox } from '../components/ui/NeumorphicBox';
+import UserData from '../components/home/UserData';
 
 const Home = () => {
   return (
@@ -19,11 +20,18 @@ const Home = () => {
           $direction='column'
           $gap={20}
         >
-          <NeumorphicBox $height={'50%'} $fullWidth></NeumorphicBox>
-          <NeumorphicBox $height={'50%'} $fullWidth></NeumorphicBox>
+          <NeumorphicBox $height={'50%'} $padding={8} $fullWidth>
+            <UserData />
+          </NeumorphicBox>
+          <NeumorphicBox
+            $height={'50%'}
+            $padding={8}
+            $fullWidth
+          ></NeumorphicBox>
         </Flex>
         <Flex $grow={1} $justify={'center'} $fullHeight $direction='column'>
           <NeumorphicBox
+            $padding={8}
             $height={`calc(100% + ${space(10)})`}
             $fullWidth
           ></NeumorphicBox>

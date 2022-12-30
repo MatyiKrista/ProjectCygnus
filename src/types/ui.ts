@@ -5,6 +5,7 @@ export type UIType =
   | 'info'
   | 'dark'
   | 'light'
-  | 'background';
+  | 'background'
+  | 'accent';
 
 export type Size = 'sm' | 'md' | 'lg' | 'xl';

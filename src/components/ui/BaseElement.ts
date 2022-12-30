@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { color, space } from './helpers';
 
-export const BaseElement = styled.div<{
+export type BaseElementProps = {
   $width?: number | string;
   $height?: number | string;
   $padding?: number | string;
@@ -9,7 +9,9 @@ export const BaseElement = styled.div<{
   $fullWidth?: boolean;
   $fullHeight?: boolean;
   $background?: string;
-}>`
+};
+
+export const BaseElementStyles = css<BaseElementProps>`
   ${({
     $width,
     $height,
@@ -40,4 +42,8 @@ export const BaseElement = styled.div<{
       .map(([key, value]) => `${key}: ${value};`)
       .join('');
   }}
+`;
+
+export const BaseElement = styled.div`
+  ${BaseElementStyles}
 `;

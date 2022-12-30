@@ -10,7 +10,8 @@ const COLOR_MAP: Record<UIType, Color> = {
   info: new Color('#0984e3'),
   dark: new Color('#2d3436'),
   light: new Color('#dfe6e9'),
-  background: new Color('#d2d2d2'),
+  background: new Color('#E4EBF5'),
+  accent: new Color('#ff1a8d'),
 };
 
 export const space = (n: number) => `${n * SPACE_UNIT}rem`;
@@ -38,35 +39,36 @@ export const boxShadow = (size: Size, color = 'rgba(0, 0, 0, 0.2)') => {
   }[size];
 };
 
-export const neumorphicShadow = (size: Size = 'md', inner = false) => {
-  const dark = 'rgba(0, 0, 0, 0.1)';
-  const light = 'rgba(255, 255, 255, 0.4)';
+export const neumorphicShadow = (spread: Size = 'md', inner = false) => {
+  const dark = 'rgba(0, 0, 0, 0.075)';
+  const light = 'rgba(255, 255, 255, 0.6)';
+  const shadowNumber = inner ? 1 : 1;
+  const lightNumber = inner ? -1 : -1;
+  const insetPrefix = inner ? 'inset ' : '';
+  const shadowPlacement = `${insetPrefix} ${space(shadowNumber)} ${space(
+    shadowNumber
+  )}`;
+  const lightPlacement = `${insetPrefix} ${space(lightNumber)} ${space(
+    lightNumber
+  )}`;
 
   return {
-    sm: `${inner ? 'inset' : ''} -${space(3)} -${space(3)} ${space(
+    sm: `${shadowPlacement} ${space(2)} ${dark}, ${lightPlacement} ${space(
+      1.8
+    )} ${light}`,
+    md: `${shadowPlacement} ${space(4)} ${dark}, ${lightPlacement} ${space(
+      3.6
+    )} ${light}`,
+    lg: `${shadowPlacement} ${space(6)} ${dark}, ${lightPlacement} ${space(
+      5.8
+    )} ${light}`,
+    xl: `${shadowPlacement} ${space(12)} ${dark}, ${lightPlacement} ${space(
       10
-    )} ${dark}, ${inner ? 'inset' : ''} ${space(3)} ${space(3)} ${space(
-      10
     )} ${light}`,
-    md: `${inner ? 'inset' : ''} -${space(3)} -${space(3)} ${space(
-      14
-    )} ${dark}, ${inner ? 'inset' : ''} ${space(3)} ${space(3)} ${space(
-      14
-    )} ${light}`,
-    lg: `${inner ? 'inset' : ''} -${space(3)} -${space(3)} ${space(
-      16
-    )} ${dark}, ${inner ? 'inset' : ''} ${space(3)} ${space(3)} ${space(
-      16
-    )} ${light}`,
-    xl: `${inner ? 'inset' : ''} -${space(3)} -${space(3)} ${space(
-      118
-    )} ${dark}, ${inner ? 'inset' : ''} ${space(3)} ${space(3)} ${space(
-      18
-    )} ${light}`,
-  }[size];
+  }[spread];
 };
 
-type ColorHelperOptions = {
+export type ColorHelperOptions = {
   lightness?: number;
   saturation?: number;
   alpha?: number;
