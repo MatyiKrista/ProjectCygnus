@@ -1,7 +1,7 @@
 import React from 'react';
 import { Flex } from '../ui/Flex';
 import { NeumorphicBox } from '../ui/NeumorphicBox';
-import { useUser } from '../../hooks/firebase/useFirebaseStore';
+import { useUser } from '../../hooks/store/useFirebaseStore';
 import Text from '../ui/Text';
 
 const UserData = () => {

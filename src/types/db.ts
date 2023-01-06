@@ -40,6 +40,7 @@ export type Game = {
   createdBy: string;
   players: string[];
   updatedAt: Date;
+  updatedBy: string;
   turns: Turn[];
   currentTurn: number;
 };

@@ -2,6 +2,7 @@ import { Flex } from '../components/ui/Flex';
 import { space } from '../components/ui/helpers';
 import { NeumorphicBox } from '../components/ui/NeumorphicBox';
 import UserData from '../components/home/UserData';
+import CreateGameButton from '../components/home/CreateGameButton';
 
 const Home = () => {
   return (
@@ -34,7 +35,9 @@ const Home = () => {
             $padding={8}
             $height={`calc(100% + ${space(10)})`}
             $fullWidth
-          ></NeumorphicBox>
+          >
+            <CreateGameButton />
+          </NeumorphicBox>
         </Flex>
       </Flex>
     </Flex>
