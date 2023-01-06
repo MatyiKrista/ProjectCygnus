@@ -11,7 +11,7 @@ const COLOR_MAP: Record<UIType, Color> = {
   dark: new Color('#2d3436'),
   light: new Color('#dfe6e9'),
   background: new Color('#E4EBF5'),
-  accent: new Color('#ff1a8d'),
+  accent: new Color('#1a0f7a'),
 };
 
 export const space = (n: number) => `${n * SPACE_UNIT}rem`;
